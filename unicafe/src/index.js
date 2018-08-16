@@ -5,17 +5,21 @@ const Button = (props) => {
   return <button onClick={props.onClick}>{props.nimi}</button>
 }
 
-const Statistics = (props) => {
-  return (
-    <div>
-      <Statistic nimi="hyvä" arvo={props.hyva} />
-      <Statistic nimi="neutraali" arvo={props.neutraali} />
-      <Statistic nimi="huono" arvo={props.huono} />
-      <Statistic nimi="keskiarvo" arvo={props.ka} />
-      <Statistic nimi="positiivisia" arvo={props.pos + " %"} />
-    </div>
+const Statistics = (props) => { 
+  if (props.hyva === 0 && props.neutraali === 0 && props.huono === 0) {
+    return <p>ei yhtään palautetta annettu</p>
+  } else {
+    return (
+      <div>
+        <Statistic nimi="hyvä" arvo={props.hyva} />
+        <Statistic nimi="neutraali" arvo={props.neutraali} />
+        <Statistic nimi="huono" arvo={props.huono} />
+        <Statistic nimi="keskiarvo" arvo={props.ka} />
+        <Statistic nimi="positiivisia" arvo={props.pos + " %"} />
+      </div>
     )
-  } 
+  }
+} 
 
 
 const Statistic = (props) => {
