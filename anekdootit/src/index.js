@@ -8,7 +8,9 @@ class App extends React.Component {
       selected: 0,
       votes: [
         0, 0, 0, 0, 0, 0 
-      ]
+      ],
+      maxValue: 0,
+      maxIndex: 0
     } 
   } 
 
@@ -23,6 +25,12 @@ class App extends React.Component {
         const copy = {...this.state.votes}
         copy[this.state.selected] += 1
         this.setState({ votes: copy })
+        if (copy[this.state.selected]>this.state.maxValue) {
+            this.setState({ 
+                maxIndex: this.state.selected,
+                maxValue: copy[this.state.selected]
+            })
+        }
     }
   }
   
@@ -35,6 +43,9 @@ class App extends React.Component {
         <button onClick={this.setValue(Math.floor(Math.random() * 6))}>
           next anecdote
         </button> 
+        <h1>anecdote with most votes:</h1>
+        <div>{this.props.anecdotes[this.state.maxIndex]}</div>
+        <div>has {this.state.votes[this.state.maxIndex]} votes</div>
       </div> 
     ) 
   } 
