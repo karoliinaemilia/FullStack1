@@ -1,6 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+const Button = (props) => {
+  return <button onClick={props.onClick}>{props.nimi}</button>
+}
+
+const Statistics = (props) => {
+  return (
+    <div>
+      <Statistic nimi="hyvä" arvo={props.hyva} />
+      <Statistic nimi="neutraali" arvo={props.neutraali} />
+      <Statistic nimi="huono" arvo={props.huono} />
+      <Statistic nimi="keskiarvo" arvo={props.ka} />
+      <Statistic nimi="positiivisia" arvo={props.pos + " %"} />
+    </div>
+    )
+  } 
+
+
+const Statistic = (props) => {
+   return (
+       <p>{props.nimi} {props.arvo}</p>
+   )
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -36,22 +59,11 @@ class App extends React.Component {
     return (
       <div>
         <h1>anna palautetta</h1>
-        <button onClick={this.kasvataYhdella(1)}>
-          hyvä
-        </button>
-        <button onClick={this.kasvataYhdella(2)}>
-          neutraali
-        </button>
-        <button onClick={this.kasvataYhdella(3)}>
-          huono
-        </button>
-        <div>{this.state.counter}</div>
+        <Button onClick={this.kasvataYhdella(1)} nimi="hyvä" />
+        <Button onClick={this.kasvataYhdella(2)} nimi="neutraali" />
+        <Button onClick={this.kasvataYhdella(3)} nimi="huono" />
         <h1>statistiikka</h1>
-        <p>hyvä: {this.state.counter1}</p>
-        <p>neutraali: {this.state.counter2}</p>
-        <p>huono: {this.state.counter3}</p>
-        <p>keskiarvo: {ka}</p>
-        <p>positiivisia: {pos}%</p>
+        <Statistics hyva={hy} neutraali={n} huono={hu} ka={ka} pos={pos} />
       </div>
     )
   }
