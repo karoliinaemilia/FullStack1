@@ -24,6 +24,15 @@ class App extends React.Component {
   }
 
   render() {
+
+    const hy = this.state.counter1
+    const n = this.state.counter2
+    const hu = this.state.counter3
+    const total = hy+hu+n
+    const ka = Math.round(((hy-hu)/(total))*10)/10
+    const pos = Math.round(((hy/total)*100)*10)/10
+
+  
     return (
       <div>
         <h1>anna palautetta</h1>
@@ -41,6 +50,8 @@ class App extends React.Component {
         <p>hyvä: {this.state.counter1}</p>
         <p>neutraali: {this.state.counter2}</p>
         <p>huono: {this.state.counter3}</p>
+        <p>keskiarvo: {ka}</p>
+        <p>positiivisia: {pos}%</p>
       </div>
     )
   }
