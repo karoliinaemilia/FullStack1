@@ -10,13 +10,15 @@ const Statistics = (props) => {
     return <p>ei yhtään palautetta annettu</p>
   } else {
     return (
-      <div>
-        <Statistic nimi="hyvä" arvo={props.hyva} />
-        <Statistic nimi="neutraali" arvo={props.neutraali} />
-        <Statistic nimi="huono" arvo={props.huono} />
-        <Statistic nimi="keskiarvo" arvo={props.ka} />
-        <Statistic nimi="positiivisia" arvo={props.pos + " %"} />
-      </div>
+      <table>
+        <tbody>
+          <Statistic nimi="hyvä" arvo={props.hyva} />
+          <Statistic nimi="neutraali" arvo={props.neutraali} />
+          <Statistic nimi="huono" arvo={props.huono} />
+          <Statistic nimi="keskiarvo" arvo={props.ka} />
+          <Statistic nimi="positiivisia" arvo={props.pos + " %"} />
+        </tbody>
+      </table>
     )
   }
 } 
@@ -24,7 +26,10 @@ const Statistics = (props) => {
 
 const Statistic = (props) => {
    return (
-       <p>{props.nimi} {props.arvo}</p>
+      <tr>
+        <td>{props.nimi}</td>
+        <td>{props.arvo}</td>
+      </tr>
    )
 }
 
